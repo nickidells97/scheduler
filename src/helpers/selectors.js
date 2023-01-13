@@ -25,3 +25,23 @@ export function getAppointmentsForDay(state, day) {
   }
   return arrayOfAppointments;
 }
+
+//*****************
+
+
+
+export function getInterview(state, interview)  {
+
+  if(!interview) {
+    return null;
+  };
+
+  const interviewerID = interview.interviewer.toString();
+
+  for (let interviewer in state.interviewers) {
+    if (state.interviewers.hasOwnProperty(interviewerID)) {
+      interview.interviewer = state.interviewers[interviewer]
+      return interview;
+    } ;
+  };
+}
