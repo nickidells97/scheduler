@@ -1,3 +1,5 @@
+//get the appointments data for the day
+
 export function getAppointmentsForDay(state, day) {
 
   if (state.days.length === 0) {
@@ -6,42 +8,50 @@ export function getAppointmentsForDay(state, day) {
 
   let arrayOfAppointments = [];
 
-  day = state.days.find(i => i.name === day)
+  
+  const currentDay = state.days.find(i => i.name === day);
 
-  if(day === undefined) {
+  if (currentDay === undefined) {
+    return [];
+  }
+return currentDay.appointments.map(id => state.appointments[id])
+}
+
+/*******************************************/
+
+//get the interview data
+
+export function getInterview(state, interview) {
+
+  if (!interview) {
+    return null;
+  }
+
+  const interviewerID = interview.interviewer;
+  return {
+    
+    student: interview.student,
+    interviewer: state.interviewers[interviewerID]
+  }
+
+}
+
+/*******************************************/
+
+//get the interviewers list for the day
+
+export function getInterviewersForDay(state, day) {
+
+  if (state.days.length === 0) {
     return [];
   }
 
-  let appointments = day.appointments;
+  let arrayOfInterviewers = [];
 
-  let hello = Object.keys(state.appointments).map(Number)
-  
-  appointments = hello.filter(i => appointments.includes(i));
+  const currentDay = state.days.find(i => i.name === day);
 
-  for (let appointment in state.appointments) {
-    if (appointments.includes(state.appointments[appointment].id)) {
-      arrayOfAppointments.push(state.appointments[appointment])
-    }
+  if (currentDay === undefined) {
+    return [];
   }
-  return arrayOfAppointments;
-}
-
-//*****************
-
-
-
-export function getInterview(state, interview)  {
-
-  if(!interview) {
-    return null;
-  };
-
-  const interviewerID = interview.interviewer.toString();
-
-  for (let interviewer in state.interviewers) {
-    if (state.interviewers.hasOwnProperty(interviewerID)) {
-      interview.interviewer = state.interviewers[interviewer]
-      return interview;
-    } ;
-  };
+return currentDay.interviewers.map(id => state.interviewers[id])
 }
