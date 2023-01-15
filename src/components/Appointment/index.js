@@ -19,24 +19,33 @@ const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
 const EDIT = "EDIT";
 
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = "ERROR_DELETE";
+
 export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
+  //Save function
   const save = (name, interviewer) => {
     const interview = {
       student: name,
       interviewer
     };
     transition(SAVING);
-    props.bookInterview(props.id, interview).then(() => transition(SHOW));
+    props.bookInterview(props.id, interview)
+      .then(() => transition(SHOW))
+      .catch(error => transition(ERROR_SAVE, true));
   };
 
+  //Delete function
   const deleteInterview = () => {
-    const interview = null;
-    transition(DELETING);
-    props.cancelInterview(props.id, interview).then(() => transition(EMPTY));
+
+    transition(DELETING, true);
+    props.cancelInterview(props.id)
+      .then(() => transition(EMPTY))
+      .catch(error => transition(ERROR_DELETE, true));
   };
 
   return (
@@ -83,6 +92,22 @@ export default function Appointment(props) {
             back(SHOW);
           }}
           onSave={save}
+        />
+      )}
+      {mode === ERROR_SAVE && (
+        <Error
+          // message={"There was an error saving your appointment"}
+          // onClose={() => {
+          //   back(EMPTY);
+          // }}
+        />
+      )}
+      {mode === ERROR_DELETE && (
+        <Error
+          // message={"There was an error deleting your appointment"}
+          // onClose={() => {
+          //   back(SHOW);
+          // }}
         />
       )}
     </article>

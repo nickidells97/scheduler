@@ -1,4 +1,4 @@
-import { react, useState } from "react";
+import { useState } from "react";
 
 
 
@@ -15,7 +15,7 @@ export default function useVisualMode(initial) {
     }
     setMode(data);
     newHistory.push(data);
-    setHistory(newHistory);
+    setHistory(prev => ([...prev, newHistory]));
   };
 
   const back = () => {
