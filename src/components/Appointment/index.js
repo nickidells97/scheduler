@@ -4,6 +4,7 @@ import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
 import Form from "./Form";
+import Error from "./Error";
 
 import "components/Appointment/styles.scss";
 
@@ -81,7 +82,7 @@ export default function Appointment(props) {
         <Confirm
           message={"Are you sure you would like to delete?"}
           onCancel={() => {
-            back(SHOW);
+            back();
           }}
           onConfirm={deleteInterview}
         />}
@@ -89,25 +90,25 @@ export default function Appointment(props) {
         <Form
           interviewers={props.interviewers}
           onCancel={() => {
-            back(SHOW);
+            back();
           }}
           onSave={save}
         />
       )}
       {mode === ERROR_SAVE && (
         <Error
-          // message={"There was an error saving your appointment"}
-          // onClose={() => {
-          //   back(EMPTY);
-          // }}
+          message={"There was an error saving your appointment"}
+          onClose={() => {
+            back();
+          }}
         />
       )}
       {mode === ERROR_DELETE && (
         <Error
-          // message={"There was an error deleting your appointment"}
-          // onClose={() => {
-          //   back(SHOW);
-          // }}
+          message={"There was an error deleting your appointment"}
+          onClose={() => {
+            back();
+          }}
         />
       )}
     </article>
