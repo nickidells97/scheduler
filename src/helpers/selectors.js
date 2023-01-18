@@ -6,9 +6,6 @@ export const getAppointmentsForDay = (state, day) => {
     return [];
   }
 
-  let arrayOfAppointments = [];
-
-
   const currentDay = state.days.find(i => i.name === day);
 
   if (currentDay === undefined) {
@@ -45,8 +42,6 @@ export const getInterviewersForDay = (state, day) => {
   if (state.days.length === 0) {
     return [];
   }
-
-  let arrayOfInterviewers = [];
 
   const currentDay = state.days.find(i => i.name === day);
 
