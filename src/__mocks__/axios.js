@@ -1,4 +1,4 @@
-import { put } from "request";
+import { del, put } from "request";
 
 const fixtures = {
   days: [
@@ -85,6 +85,12 @@ export default {
     }
   }),
   put: jest.fn(() => {
+    return Promise.resolve({
+      status: 200,
+      statusText: "No Content"
+    })
+  }),
+  delete: jest.fn(() => {
     return Promise.resolve({
       status: 200,
       statusText: "No Content"
