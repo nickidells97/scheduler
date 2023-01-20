@@ -6,18 +6,14 @@ Install dependencies with `npm install`.
 
 ## Running Webpack Development Server
 
-```sh
-npm start
-```
+* start server with `npm start`.
+* this app requires an external api to function properly, therefore remember to download that so information is saved.
+* tests can be accessed and ran using `npm test`.
+* cypress E2E tests can also be accessed by having the webpack server running, the test api database server running as well as calling `npm run cypress`.
 
-## Running Jest Test Framework
+## Features
 
-```sh
-npm test
-```
+This application builds the framework for a interview scheduler for one week, that can be scaled up to multiple weeks or months in the future. It allows users to pick a date, time and specific interviewer that they wish. The app also allows then to cancel the interview, or edit it if they made a mistake when scheduling. The list of days also portrays the spots available on each day of the week, so the user doesn't have to go searching for availabilities. 
 
-## Running Storybook Visual Testbed
+Please see below for screenshots;
 
-```sh
-npm run storybook
-```
