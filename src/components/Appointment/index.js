@@ -32,28 +32,27 @@ export default function Appointment(props) {
   const save = (name, interviewer) => {
     const interview = {
       student: name,
-      interviewer
+      interviewer,
     };
     transition(SAVING);
-    props.bookInterview(props.id, interview)
+    props
+      .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
       .catch(() => transition(ERROR_SAVE, true));
   };
 
   //Delete function
   const deleteInterview = () => {
-
     transition(DELETING, true);
-    props.cancelInterview(props.id)
+    props
+      .cancelInterview(props.id)
       .then(() => transition(EMPTY))
       .catch(() => transition(ERROR_DELETE, true));
   };
 
   return (
     <article className="appointment" data-testid="appointment">
-      <Header
-        time={props.time}
-      />
+      <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
         <Show
@@ -78,19 +77,22 @@ export default function Appointment(props) {
       )}
       {mode === SAVING && <Status message={"Saving"} />}
       {mode === DELETING && <Status message={"Deleting"} />}
-      {mode === CONFIRM &&
+      {mode === CONFIRM && (
         <Confirm
           message={"Are you sure you would like to delete?"}
           onCancel={() => {
             back();
           }}
           onConfirm={deleteInterview}
-        />}
+        />
+      )}
       {mode === EDIT && (
         <Form
           interviewers={props.interviewers}
           student={props.interview.student}
-          interviewer={props.interview.interviewer && props.interview.interviewer.id}
+          interviewer={
+            props.interview.interviewer && props.interview.interviewer.id
+          }
           onCancel={() => {
             back();
           }}
@@ -113,7 +115,6 @@ export default function Appointment(props) {
           }}
         />
       )}
-      
     </article>
   );
 }

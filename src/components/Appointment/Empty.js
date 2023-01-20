@@ -1,7 +1,8 @@
 import React from "react";
 
-export default function Empty (props) {
+export default function Empty(props) {
 
+  //Empty component When no interview is scheduled
   return (
     <main className="appointment__add">
       <img
