@@ -19,7 +19,6 @@ const SAVING = "SAVING";
 const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
 const EDIT = "EDIT";
-
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
@@ -28,7 +27,7 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  //Save function
+  //Save functionality
   const save = (name, interviewer) => {
     const interview = {
       student: name,
@@ -41,7 +40,7 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_SAVE, true));
   };
 
-  //Delete function
+  //Delete functionality
   const deleteInterview = () => {
     transition(DELETING, true);
     props

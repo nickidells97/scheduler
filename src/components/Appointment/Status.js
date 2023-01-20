@@ -1,5 +1,6 @@
 import React from "react";
 
+//Saving or deleting status after clicking respective buttons
 export default function Status(props) {
   return (
     <main className="appointment__card appointment__card--status">

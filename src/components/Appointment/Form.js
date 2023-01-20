@@ -6,6 +6,7 @@ import Button from "components/Button";
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [error, setError] = useState("");
 
   //sets the student and interviewer variables to default values
   const reset = () => {
@@ -19,9 +20,7 @@ export default function Form(props) {
     props.onCancel();
   };
 
-  const [error, setError] = useState("");
-
-  //Confirm functionality when trying to delete 
+  //Confirm functionality when trying to delete
   function validate() {
     if (student === "") {
       setError("Student name cannot be blank");

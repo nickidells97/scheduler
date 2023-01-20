@@ -8,8 +8,6 @@ import { waitForElement } from "@testing-library/react";
 
 import { fireEvent } from "@testing-library/react";
 
-import { prettyDOM } from "@testing-library/react";
-
 import {
   getByText,
   getAllByTestId,
