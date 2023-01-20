@@ -17,3 +17,10 @@ This application builds the framework for a interview scheduler for one week, th
 
 Please see below for screenshots;
 
+
+!["Main page with interviews scheduled"](https://github.com/nickidells97/scheduler/blob/master/docs/main-page.png?raw=true)
+
+!["Creating new interview"](https://github.com/nickidells97/scheduler/blob/master/docs/new-interview.png?raw=true)
+
+!["Deleting, Editing and Confirmation functionality when accessing appointments"](https://github.com/nickidells97/scheduler/blob/master/docs/deleting-editing-confirming.png?raw=true)
+
